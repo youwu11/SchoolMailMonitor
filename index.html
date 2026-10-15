@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>School Mail Monitor · Setup Guide</title><meta name="theme-color" content="#152849"><style>
+*{box-sizing:border-box}html{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;scroll-behavior:smooth}body{margin:0;color:#172944;background:#f2f5fa}.en{display:none}body.english .zh{display:none}body.english .en{display:inline}.wrap{max-width:810px;margin:30px auto;padding:0 14px 60px}.hero{background:linear-gradient(120deg,#152849,#335b8f);color:#fff;border-radius:20px;padding:29px 28px}.hero h1{font-size:clamp(26px,6vw,37px);letter-spacing:-1px;margin:25px 0 9px}.hero p{color:#dce7f7;font-size:14px;line-height:1.6;margin:0}.top{display:flex;align-items:center;justify-content:space-between;gap:10px}.eyebrow{font-size:11px;letter-spacing:1.6px;color:#bfd6f4;font-weight:800}.langbar{border:1px solid #ffffff70;border-radius:11px;background:#ffffff22;display:flex;gap:3px;padding:4px}.langbar button{border:0;border-radius:8px;background:transparent;color:#e9f3ff;font-weight:750;padding:8px 11px}.langbar button.selected{background:#fff;color:#183e72}.card{background:white;border:1px solid #e0e7f0;box-shadow:0 5px 20px #162e4e0c;border-radius:18px;padding:22px;margin-top:16px}.progressrow{display:flex;justify-content:space-between;font-weight:700;gap:10px;font-size:13px}.muted{color:#71829a}.meter{height:8px;background:#eaf0f7;border-radius:30px;margin-top:14px;overflow:hidden}.fill{height:100%;width:0;background:#285d96;transition:width .25s}.nav{display:flex;gap:8px;overflow:auto;margin-top:18px}.nav a{flex-shrink:0;border-radius:9px;border:1px solid #d6e1ee;text-decoration:none;color:#324e70;font-weight:800;font-size:12px;padding:10px 13px;background:#f7f9fc}.nav a:hover{background:#eaf2fa}.phase{background:white;border:1px solid #dfe7f0;border-radius:16px;overflow:hidden;margin-top:12px}.phase>summary{list-style:none;display:flex;align-items:center;gap:12px;cursor:pointer;padding:20px}.phase>summary::-webkit-details-marker{display:none}.phase[open]>summary{border-bottom:1px solid #e5ecf5}.number{width:40px;height:40px;flex-shrink:0;display:grid;place-items:center;background:#eaf1f9;border-radius:50%;color:#205082;font-weight:800}.summarytext{font-size:18px;font-weight:800;flex:1;min-width:0}.chev{font-size:22px;color:#59758f;transition:transform .15s}.phase[open] .chev{transform:rotate(180deg)}.inside{padding:8px 22px 24px}.kicker,.posttitle{font-size:12px;font-weight:800;letter-spacing:.45px;color:#57718e;margin:17px 0 10px}.checkrow{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid #eff2f7;cursor:pointer;font-size:14px;line-height:1.55}.checkrow input{width:18px;height:18px;accent-color:#235a93;flex-shrink:0;margin:2px 0 0}.checkrow:has(input:checked) span{text-decoration:line-through;color:#8797a9}.prompt{margin-top:22px;border:1px solid #dbe5ef;border-radius:12px;overflow:hidden}.prompttop{padding:12px 14px;background:#edf3fa;display:flex;align-items:center;justify-content:space-between;font-size:13px}.copy{border:1px solid #a4bbd7;border-radius:8px;background:#fff;color:#234d81;padding:8px 14px;font-weight:800;cursor:pointer}.prompt pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;background:#fcfdff;padding:17px;font:12px/1.75 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#263953;max-height:430px;overflow-y:auto}.posttitle{margin-top:24px}.note{font-size:12px;color:#6a7f95;margin:20px 6px;line-height:1.6}@media(max-width:530px){.wrap{padding:0 10px 35px;margin:0}.hero{margin:0 -10px;border-radius:0 0 22px 22px;padding:30px 20px}.hero h1{margin-top:28px}.card{padding:17px 15px}.phase>summary{padding:15px}.inside{padding:7px 16px 22px}.summarytext{font-size:16px}.prompt pre{font-size:11.4px;padding:13px}.langbar button{padding:7px 9px}}
+</style></head><body><div class="wrap"><header class="hero"><div class="top"><span class="eyebrow">FAMILY AI · SETUP GUIDE</span><div class="langbar" role="group" aria-label="Language"><button id="zhBtn" class="selected" type="button">中文</button><button id="enBtn" type="button">English</button></div></div><h1>School Mail Monitor</h1><p><span class="zh">Outlook / Gmail 邮件监控 · 学校信息汇报 · 未来 10 天每日提醒</span><span class="en">Outlook or Gmail monitoring · School updates · Next 10 days of reminders</span></p></header>
+<div class="card"><div class="progressrow"><span class="zh">设置完成进度</span><span class="en">Setup progress</span><span class="muted" id="progressCount">0 / 0</span></div><div class="meter"><div class="fill" id="fill"></div></div><nav class="nav"><a href="#phase-0">Phase 0</a><a href="#phase-1">Phase 1</a><a href="#phase-2">Phase 2</a><a href="#phase-3">Phase 3</a><a href="#phase-4">Phase 4</a></nav></div><main>
+<details class="phase" id="phase-0" open><summary><span class="number">00</span><span class="summarytext"><span class=" zh">连接 Outlook / Gmail 与访问权限</span><span class=" en">Outlook / Gmail &amp; Access Permissions</span></span><span class="chev">⌄</span></summary><div class="inside">
+<h3 class="kicker"><span class=" zh">手动操作 · MANUAL STEPS</span><span class=" en">MANUAL SETUP STEPS</span></h3><label class="checkrow"><input type="checkbox" data-step="0-0"><span class="zh">打开 ChatGPT → Settings → Plugins。</span><span class="en">Open ChatGPT → Settings → Plugins.</span></label><label class="checkrow"><input type="checkbox" data-step="0-1"><span class="zh">在 Plugins 中搜索 Outlook / Microsoft Outlook Email 或 Gmail，选择你使用的邮箱插件，点击 Connect 并完成登录授权。</span><span class="en">Search Outlook / Microsoft Outlook Email or Gmail in Plugins. Choose your email provider, tap Connect and authorise access.</span></label>
+<div class="prompt"><div class="prompttop"><strong>📋 ORIGINAL PROMPT</strong><button type="button" class="copy" data-copy="0">Copy</button></div><pre id="prompt-0">School Mail Monitor
+
+Phase 0 — Access &amp; Permission Setup
+
+Verify my connected Outlook or Gmail plugin can read recent child-related emails.
+Check email bodies, attachments, PDFs and source links.
+Report any access limitations. Do not modify emails.
+
+Set up Cloud Browser access for school links found in Outlook or Gmail emails.
+1. Open sample links from Konomi, Storypark and Sundial.
+2. If login is required, pause for me to authenticate.
+3. Guide me to set the relevant Cloud Browser permissions to "Always Allow" in Settings, where supported.
+4. Verify the linked notices and PDFs can be read.
+5. Report any inaccessible sources.
+Do not submit forms or modify information.</pre></div><h3 class="posttitle"><span class=" zh">Prompt 之后 · Cloud Browser 手动设置</span><span class=" en">After the Prompt · Cloud Browser Manual Setup</span></h3><label class="checkrow"><input data-step="0-post-2" type="checkbox"/><span class="zh">打开 ChatGPT Settings → Cloud Browser，将 Phase 0 Prompt 结果中提供的所有学校网站链接设置为 Always Allow（如支持）。</span><span class="en">Open ChatGPT Settings → Cloud Browser and set all school website links identified in the Phase 0 prompt results to Always Allow, where supported.</span></label></div></details>
+<details class="phase" id="phase-1" ><summary><span class="number">01</span><span class="summarytext"><span class=" zh">创建存储文件</span><span class=" en">Create Storage Files</span></span><span class="chev">⌄</span></summary><div class="inside">
+<h3 class="kicker"><span class=" zh">手动操作 · MANUAL STEPS</span><span class=" en">MANUAL SETUP STEPS</span></h3><label class="checkrow"><input type="checkbox" data-step="1-0"><span class="zh">复制本阶段 Prompt，创建 kids_email_state.json 和 manual_reminders.json。</span><span class="en">Copy this phase’s prompt to create kids_email_state.json and manual_reminders.json.</span></label><label class="checkrow"><input type="checkbox" data-step="1-1"><span class="zh">进入 ChatGPT Work → 当前 Work Space → Library，确认两个文件已存在。</span><span class="en">Go to ChatGPT Work → current Work Space → Library and confirm that both files exist.</span></label>
+<div class="prompt"><div class="prompttop"><strong>📋 ORIGINAL PROMPT</strong><button type="button" class="copy" data-copy="1">Copy</button></div><pre id="prompt-1">Phase 1 — 创建存储文件
+
+Set up persistent storage for my Kids Email Monitor and Daily Reminder in this Work Space Library.
+Create:
+1. kids_email_state.json — email checkpoints, deduplication, pending reminders and actions.
+2. manual_reminders.json — user-provided reminders, including events, deadlines, preparations and follow-ups.
+Use compact JSON schemas with stable IDs, source references, status, timestamps and retry metadata where relevant.
+Keep operational state separate from task configuration.
+Allow natural-language additions, updates, completion and cancellations in manual_reminders.json only with explicit user authorisation. Scheduled runs must remain read-only.
+
+Report file paths, schema summaries and any unsupported capabilities.</pre></div></div></details>
+<details class="phase" id="phase-2" ><summary><span class="number">02</span><span class="summarytext"><span class=" zh">创建邮件监控任务</span><span class=" en">Kids Email Monitor</span></span><span class="chev">⌄</span></summary><div class="inside">
+<h3 class="kicker"><span class=" zh">手动操作 · MANUAL STEPS</span><span class=" en">MANUAL SETUP STEPS</span></h3><label class="checkrow"><input type="checkbox" data-step="2-0"><span class="zh">复制本阶段 Prompt 并发送给 ChatGPT。</span><span class="en">Copy this phase’s prompt and send it to ChatGPT.</span></label><label class="checkrow"><input type="checkbox" data-step="2-1"><span class="zh">根据 Prompt 输出的提示，准备孩子姓名、学校、班级、出勤日及课外活动等信息。</span><span class="en">Follow the prompt’s output to prepare children’s names, schools, classes, attendance days and extracurricular details.</span></label><label class="checkrow"><input type="checkbox" data-step="2-2"><span class="zh">前往 ChatGPT → Tasks，确认每小时运行、悉尼时区与任务说明。</span><span class="en">Open ChatGPT → Tasks and verify the hourly Australia/Sydney schedule and instructions.</span></label>
+<div class="prompt"><div class="prompttop"><strong>📋 ORIGINAL PROMPT</strong><button type="button" class="copy" data-copy="2">Copy</button></div><pre id="prompt-2">Phase 2 — Create Kids Email Monitor
+
+Create a scheduled task named Kids Email Monitor, running hourly in Australia/Sydney.
+
+Initial Setup: Before creation, confirm children’s names, preferred names, schools, classes, attendance days and extracurricular activities. Keep family configuration separate from operational state.
+
+Goal: Monitor connected Outlook for new or updated child-related emails, including schools, childcare, extracurriculars, birthdays, playdates and medical appointments. Ignore marketing.
+
+Processing &amp; Storage: Read accessible emails, attachments and linked notices, using Cloud Browser when supported. Extract and save meaningful child-related updates, events, preparations and actions to kids_email_state.json. Preserve source links and updates. Reminder delivery is handled separately.
+
+Reporting: Summarise meaningful updates on each child’s school life, learning, activities, progress and wellbeing in natural, concise Simplified Chinese, like a thoughtful personal assistant for a busy mum. Highlight key dates, actions and preparations, include source links, flag urgent changes promptly, and avoid speculation, trivial updates or duplicate notifications.
+
+Reliability: Use a 2-hour email overlap, stable IDs and change detection to deduplicate and process updates. Maintain checkpoints and retry failed processing without losing valid state. Advance checkpoints only after verified persistence. Keep records compact; never store full email bodies. Verify file access and report failures or unverified cross-run persistence.
+
+Safety: Write operational data only to kids_email_state.json Never modify other tasks or this task description, or store operational history in the task prompt. 
+
+Setup &amp; Verification: Confirm required access, initialise state files only if absent and writable, then create only Kids Email Monitor. Verify its hourly Sydney schedule, complete instructions and available file persistence; report unsupported capabilities.</pre></div></div></details>
+<details class="phase" id="phase-3" ><summary><span class="number">03</span><span class="summarytext"><span class=" zh">创建每日提醒任务</span><span class=" en">Kids Daily Reminder</span></span><span class="chev">⌄</span></summary><div class="inside">
+<h3 class="kicker"><span class=" zh">手动操作 · MANUAL STEPS</span><span class=" en">MANUAL SETUP STEPS</span></h3><label class="checkrow"><input type="checkbox" data-step="3-0"><span class="zh">复制本阶段 Prompt 创建 Kids Daily Reminder。</span><span class="en">Copy the original prompt to create Kids Daily Reminder.</span></label><label class="checkrow"><input type="checkbox" data-step="3-1"><span class="zh">前往 ChatGPT → Tasks，确认每天 18:00 Australia/Sydney。</span><span class="en">Open ChatGPT → Tasks and verify 18:00 daily in Australia/Sydney.</span></label>
+<div class="prompt"><div class="prompttop"><strong>📋 ORIGINAL PROMPT</strong><button type="button" class="copy" data-copy="3">Copy</button></div><pre id="prompt-3">Phase 3 — 设置提醒策略
+
+Create a scheduled task named Kids Daily Reminder, running daily at 18:00 Australia/Sydney.
+
+Goal: Act as a proactive personal assistant for a busy mum. Every evening, send a concise, natural Simplified Chinese briefing of child-related events over the next 10 days
+
+Sources: Read kids_email_state.json and manual_reminders.json. Use authenticated Cloud Browser to check linked notices when supported. Allow user-authorised natural-language updates to manual_reminders.json.
+
+Report: Summarise upcoming school events chronologically in Simplified Chinese, like a proactive personal assistant for a busy mum. Include date, time, location, preparations and key notes. Omit completed actions and duplicates. Include source links when available.
+
+Reliability: Deduplicate events, respect updates and cancellations, verify file persistence and report access failures without guessing.
+
+Safety: Scheduled runs are read-only. Only explicit user requests may modify manual_reminders.json.
+
+Verify task creation, schedule and available file access. Report unsupported capabilities.</pre></div></div></details>
+<details class="phase" id="phase-4"><summary><span class="number">04</span><span class="summarytext"><span class="zh">历史邮件补录与激活</span><span class="en">Historical Backfill &amp; Activation</span></span><span class="chev">⌄</span></summary><div class="inside">
+<h3 class="kicker"><span class="zh">手动操作 · MANUAL STEPS</span><span class="en">MANUAL SETUP STEPS</span></h3><label class="checkrow"><input type="checkbox" data-step="4-0"><span class="zh">复制本阶段 Prompt，发送给 ChatGPT。</span><span class="en">Copy this phase's prompt and send it to ChatGPT.</span></label>
+<div class="prompt"><div class="prompttop"><strong>📋 ORIGINAL PROMPT</strong><button type="button" class="copy" data-copy="4">Copy</button></div><pre id="prompt-4">Review child-related emails from the past 20 days using connected Outlook or Gmail, including accessible attachments and linked notices.
+
+1. Extract upcoming events, reminders, deadlines and pending actions.
+2. Automatically update kids_email_state.json with relevant updates and reminders, without duplicates or unnecessary approval. Do not create a calendar queue or synchronise calendar events.
+3. Verify extraction accuracy, file persistence and reminder functionality. Report any failures.
+4. Ensure Kids Email Monitor and Kids Daily Reminder are enabled and can access the updated files.
+
+Safety: Do not invent missing details, send emails, modify calendars or create duplicate tasks. Request approval only when necessary.
+
+Present a test summary, proposed reminders</pre></div></div></details></main><p class="note"><span class="zh">点击每个 Phase 标题展开或收起。五段原始 Prompt 保持不变。完成进度只保存在本机浏览器，不会自动执行任务。</span><span class="en">Tap a Phase heading to expand or collapse it. All original prompts are unchanged. Progress stays in this browser; this guide does not run tasks.</span></p></div><script>
+(function(){'use strict';
+const storage='school-mail-monitor-checks-v3';let state={};try{state=JSON.parse(localStorage.getItem(storage)||'{}')}catch(e){}
+function updateProgress(){const boxes=[...document.querySelectorAll('input[data-step]')];let done=boxes.filter(b=>b.checked).length;document.getElementById('progressCount').textContent=done+' / '+boxes.length;document.getElementById('fill').style.width=(100*done/boxes.length)+'%'}
+document.querySelectorAll('input[data-step]').forEach(box=>{box.checked=!!state[box.dataset.step];box.addEventListener('change',()=>{state[box.dataset.step]=box.checked;try{localStorage.setItem(storage,JSON.stringify(state))}catch(e){}updateProgress()})});updateProgress();
+function setLang(lang){document.body.classList.toggle('english',lang==='en');document.documentElement.lang=lang==='en'?'en':'zh-CN';document.getElementById('zhBtn').classList.toggle('selected',lang==='zh');document.getElementById('enBtn').classList.toggle('selected',lang==='en');try{localStorage.setItem('school-mail-monitor-lang-v3',lang)}catch(e){}}
+document.getElementById('zhBtn').addEventListener('click',()=>setLang('zh'));document.getElementById('enBtn').addEventListener('click',()=>setLang('en'));try{setLang(localStorage.getItem('school-mail-monitor-lang-v3')==='en'?'en':'zh')}catch(e){setLang('zh')}
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{const target=document.querySelector(a.getAttribute('href'));if(target)target.open=true}));
+document.querySelectorAll('button[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{const text=document.getElementById('prompt-'+btn.dataset.copy).textContent;let ok=false;try{await navigator.clipboard.writeText(text);ok=true}catch(e){const t=document.createElement('textarea');t.value=text;document.body.append(t);t.select();ok=document.execCommand('copy');t.remove()}btn.textContent=ok?'✓ Copied':'Select to copy';setTimeout(()=>btn.textContent='Copy',1600)}));
+})();
+</script></body></html>
